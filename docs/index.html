@@ -1,361 +1,288 @@
-<html>
+<html lang="en-US">
   <head>
-    <title>Devolution Phone Number Generator</title>
-    <meta charset="utf-8">
-    <meta name="description" content="A tool to generate the phone number from an IP address and port for Devolution/PSO to connect to a slirp/socat server.">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="generator" content="Jekyll v3.9.3" />
+    <meta property="og:title" content="Devolution Phone Number Generator" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      name="description"
+      content="A tool to generate the phone number from an IP address and port for Devolution/PSO to connect to a slirp/socat server."
+    />
+    <meta
+      property="og:description"
+      content="A tool to generate the phone number from an IP address and port for Devolution/PSO to connect to a slirp/socat server."
+    />
+    <link
+      rel="canonical"
+      href="https://shiftadeband.github.io/Devolution-Slirp-Modem-Emulation-Guide/README.html"
+    />
+    <meta
+      property="og:url"
+      content="https://shiftadeband.github.io/Devolution-Slirp-Modem-Emulation-Guide/README.html"
+    />
+    <meta
+      property="og:site_name"
+      content="Devolution slirp Modem Emulation Guide"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      property="twitter:title"
+      content="Devolution Phone Number Generator"
+    />
+    <link
+      rel="stylesheet"
+      href="/Devolution-Slirp-Modem-Emulation-Guide/assets/css/style.css?v=a04141bfc466bdd3310c61c486562b7a4a8a77fc"
+    />
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/Devolution-Slirp-Modem-Emulation-Guide/assets/js/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <link
+        rel="stylesheet"
+        href="/Devolution-Slirp-Modem-Emulation-Guide/assets/css/ie.css"
+      />
+    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#353535" />
+    <meta name="msapplication-navbutton-color" content="#353535" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>
+      Devolution Phone Number Generator | Devolution slirp Modem Emulation Guide
+    </title>
   </head>
   <body>
+    <div id="header">
+      <nav>
+        <ul>
+          <li class="fork">
+            <a
+              href="https://github.com/ShiftaDeband/Devolution-Slirp-Modem-Emulation-Guide"
+              >View On GitHub</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- end header -->
+
     <div class="wrapper">
-      <div class="intro">
-        <h1>Devolution Phone Number Generator</h1>
+      <section>
+        <div id="title">
+          <h1>Devolution slirp Modem Emulation Guide</h1>
+          <p>
+            A guide and utility to set up a custom Devolution PPP server using
+            slirp and socat.
+          </p>
+          <hr />
+          <span class="credits left"
+            >Project maintained by
+            <a href="https://github.com/ShiftaDeband">ShiftaDeband</a></span
+          >
+          <span class="credits right"
+            >Hosted on GitHub Pages &mdash; Theme by
+            <a href="https://twitter.com/mattgraham">mattgraham</a></span
+          >
+        </div>
+
+        <h1 id="installing-socat--slirp-for-devolution-modem-emulation-wii">
+          Devolution Phone Number Generator
+        </h1>
         <p>
           This tool is for users who are running their own slirp instance to
           connect to a <em>Phantasy Star Online</em>
           private server using Devolution's dial up emulation on the Wii.
         </p>
         <p>
-          To get started, 
-	  <a 
-            href="https://github.com/ShiftaDeband/Devolution-Slirp-Modem-Emulation-Guide/blob/main/README.md" 
-            title="Devolution slirp Modem Emulation Guide">
-          see these instructions to set up slirp and socat</a>, then enter the
-          IP address and port number of your slirp instance to generate the
-          phone number you'll use in your <em>PSO</em> connection settings.
+          To get started,
+          <a
+            href="https://shiftadeband.github.io/Devolution-Slirp-Modem-Emulation-Guide/README.html"
+            title="Devolution slirp Modem Emulation Guide"
+          >
+            see these instructions to set up slirp and socat</a
+          >, then enter the IP address and port number of your slirp instance to
+          generate the phone number you'll use in your <em>PSO</em> connection
+          settings.
         </p>
-      </div>
-      <form onsubmit="generatePhone(); return false;">
-        <div class="ip-address">
-          <input
-            id="one"
-            type="number"
-            min="1"
-            max="255"
-            minlength="1"
-            maxlength="3"
-            value="192"
-            onchange="generatePhone()"
-            onkeyup="generatePhone()"
-            placeholder="192"
-          /><span>.</span>
-          <input
-            id="two"
-            type="number"
-            min="0"
-            max="255"
-            minlength="1"
-            maxlength="3"
-            value="168"
-            onchange="generatePhone()"
-            onkeyup="generatePhone()"
-            placeholder="168"
-          /><span>.</span>
-          <input
-            id="three"
-            type="number"
-            min="0"
-            max="255"
-            minlength="1"
-            maxlength="3"
-            value="1"
-            onchange="generatePhone()"
-            onkeyup="generatePhone()"
-            placeholder="1"
-          /><span>.</span>
-          <input
-            id="four"
-            type="number"
-            min="0"
-            max="255"
-            minlength="1"
-            maxlength="3"
-            value="100"
-            onchange="generatePhone()"
-            onkeyup="generatePhone()"
-            placeholder="100"
-          />
+        <form onsubmit="generatePhone(); return false;">
+          <div class="ip-address">
+            <input
+              id="one"
+              type="number"
+              min="1"
+              max="255"
+              minlength="1"
+              maxlength="3"
+              value="192"
+              onchange="generatePhone()"
+              onkeyup="generatePhone()"
+              placeholder="192"
+            /><span>.</span>
+            <input
+              id="two"
+              type="number"
+              min="0"
+              max="255"
+              minlength="1"
+              maxlength="3"
+              value="168"
+              onchange="generatePhone()"
+              onkeyup="generatePhone()"
+              placeholder="168"
+            /><span>.</span>
+            <input
+              id="three"
+              type="number"
+              min="0"
+              max="255"
+              minlength="1"
+              maxlength="3"
+              value="1"
+              onchange="generatePhone()"
+              onkeyup="generatePhone()"
+              placeholder="1"
+            /><span>.</span>
+            <input
+              id="four"
+              type="number"
+              min="0"
+              max="255"
+              minlength="1"
+              maxlength="3"
+              value="100"
+              onchange="generatePhone()"
+              onkeyup="generatePhone()"
+              placeholder="100"
+            />
+          </div>
+          <div class="port-number">
+            <span>Port</span>
+            <input
+              id="port"
+              type="number"
+              min="1"
+              max="65535"
+              minlength="1"
+              maxlength="5"
+              value="63335"
+              onchange="generatePhone()"
+              onkeyup="generatePhone()"
+              placeholder="63335"
+            />
+          </div>
+        </form>
+        <div class="dev-phone">
+          Phone Number
+          <h2 id="digits"></h2>
         </div>
-        <div class="port-number">
-          <span>Port</span>
-          <input
-            id="port"
-            type="number"
-            min="1"
-            max="65535"
-            minlength="1"
-            maxlength="5"
-            value="63335"
-            onchange="generatePhone()"
-            onkeyup="generatePhone()"
-            placeholder="63335"
-          />
-        </div>
-      </form>
-      <div class="dev-phone">
-        Phone Number
-        <span id="digits"></span>
-      </div>
-      <script>
-        function generatePhone() {
-          let one = parseInt(document.getElementById("one").value);
-          let two = parseInt(document.getElementById("two").value);
-          let three = parseInt(document.getElementById("three").value);
-          let four = parseInt(document.getElementById("four").value);
-          let port = parseInt(document.getElementById("port").value);
-          let combined =
-            one.toString(16).padStart(2, "0") +
-            two.toString(16).padStart(2, "0") +
-            three.toString(16).padStart(2, "0") +
-            four.toString(16).padStart(2, "0") +
-            port.toString(16).padStart(2, "0");
+        <script>
+          function generatePhone() {
+            let one = parseInt(document.getElementById("one").value);
+            let two = parseInt(document.getElementById("two").value);
+            let three = parseInt(document.getElementById("three").value);
+            let four = parseInt(document.getElementById("four").value);
+            let port = parseInt(document.getElementById("port").value);
+            let combined =
+              one.toString(16).padStart(2, "0") +
+              two.toString(16).padStart(2, "0") +
+              three.toString(16).padStart(2, "0") +
+              four.toString(16).padStart(2, "0") +
+              port.toString(16).padStart(2, "0");
 
-          if (
-            isNaN(parseInt(combined, 16)) ||
-            isNaN(one) ||
-            isNaN(two) ||
-            isNaN(three) ||
-            isNaN(four) ||
-            isNaN(port) ||
-            one <= 0 ||
-            two < 0 ||
-            three < 0 ||
-            four < 0 ||
-            port <= 0 ||
-            one > 255 ||
-            two > 255 ||
-            three > 255 ||
-            four > 255 ||
-            port > 65535
-          ) {
-            document.getElementById("digits").textContent = "Invalid";
-          } else {
-            console.log(
-              "Hexidecimal Values:",
-              combined.toUpperCase().replace(/(.{2})/g, "$&" + " ")
-            );
-            document.getElementById("digits").textContent = parseInt(
-              combined,
-              16
-            );
+            if (
+              isNaN(parseInt(combined, 16)) ||
+              isNaN(one) ||
+              isNaN(two) ||
+              isNaN(three) ||
+              isNaN(four) ||
+              isNaN(port) ||
+              one <= 0 ||
+              two < 0 ||
+              three < 0 ||
+              four < 0 ||
+              port <= 0 ||
+              one > 255 ||
+              two > 255 ||
+              three > 255 ||
+              four > 255 ||
+              port > 65535
+            ) {
+              document.getElementById("digits").textContent = "Invalid";
+            } else {
+              console.log(
+                "Hexidecimal Values:",
+                combined.toUpperCase().replace(/(.{2})/g, "$&" + " ")
+              );
+              document.getElementById("digits").textContent = parseInt(
+                combined,
+                16
+              );
+            }
           }
-        }
-        window.onload = generatePhone();
-      </script>
-      <style>
-        html,
-        body,
-        div,
-        span,
-        applet,
-        object,
-        iframe,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        blockquote,
-        pre,
-        a,
-        abbr,
-        acronym,
-        address,
-        big,
-        cite,
-        code,
-        del,
-        dfn,
-        em,
-        img,
-        ins,
-        kbd,
-        q,
-        s,
-        samp,
-        small,
-        strike,
-        strong,
-        sub,
-        sup,
-        tt,
-        var,
-        b,
-        u,
-        i,
-        center,
-        dl,
-        dt,
-        dd,
-        ol,
-        ul,
-        li,
-        fieldset,
-        form,
-        label,
-        legend,
-        table,
-        caption,
-        tbody,
-        tfoot,
-        thead,
-        tr,
-        th,
-        td,
-        article,
-        aside,
-        canvas,
-        details,
-        embed,
-        figure,
-        figcaption,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        output,
-        ruby,
-        section,
-        summary,
-        time,
-        mark,
-        audio,
-        video {
-          margin: 0;
-          padding: 0;
-          border: 0;
-          font-size: 100%;
-          font: inherit;
-          vertical-align: baseline;
-        }
-        /* HTML5 display-role reset for older browsers */
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        section {
-          display: block;
-        }
-        body {
-          line-height: 1;
-        }
-        ol,
-        ul {
-          list-style: none;
-        }
-        blockquote,
-        q {
-          quotes: none;
-        }
-        blockquote:before,
-        blockquote:after,
-        q:before,
-        q:after {
-          content: "";
-          content: none;
-        }
-        table {
-          border-collapse: collapse;
-          border-spacing: 0;
-        }
-        /* post reset styles */
-        html {
-          font-size: 62.5%;
-        }
+          window.onload = generatePhone();
+        </script>
+        <style>
+          /* post reset styles */
+          .dev-phone {
+            text-align: center;
+          }
 
-        em {
-          font-style: italic;
-        }
+          #digits {
+            font-weight: 700;
+            display: block;
+          }
 
-        body {
-          display: grid;
-          background-color: #121212;
-          place-items: center;
-          min-height: 100vh;
-          font-family: sans-serif;
-		  color: #121212;
-        }
+          form {
+            text-align: center;
+          }
 
-        .wrapper {
-          max-width: 60rem;
-          background-color: white;
-          padding: 2rem;
-          border-radius: 2rem;
-          margin: 2rem;
-        }
+          .ip-address,
+          .port-number {
+            margin: 0.8rem 0;
+          }
 
-        .intro h1 {
-          font-weight: 700;
-          font-size: 2rem;
-          padding-bottom: 1rem;
-        }
-		
-		.intro :any-link {
-			color: #121212;
-		}
+          .ip-address {
+            font-size: 0;
+          }
 
-        p,
-        span {
-          font-size: 1.6rem;
-          line-height: 2rem;
-        }
+          .ip-address span {
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            padding: 0 0.2rem;
+            vertical-align: bottom;
+            font-weight: 700;
+          }
 
-        p + p {
-          margin: 2rem 0;
-        }
+          .port-number {
+            margin-bottom: 2rem;
+          }
 
-        .dev-phone {
-          text-align: center;
-        }
+          .port-number span {
+            vertical-align: bottom;
+            font-size: 1rem;
+            line-height: 1.2rem;
+          }
 
-        #digits {
-          font-weight: 700;
-          display: block;
-        }
+          input {
+            font-size: 1.4rem;
+            width: 64px;
+          }
 
-        form {
-          text-align: center;
-        }
-
-        .ip-address,
-        .port-number {
-          margin: 0.8rem 0;
-        }
-
-        .ip-address {
-          font-size: 0;
-        }
-
-        .ip-address span {
-          font-size: 1.4rem;
-          line-height: 1.6rem;
-          padding: 0 0.2rem;
-          vertical-align: bottom;
-          font-weight: 700;
-        }
-
-        .port-number {
-          margin-bottom: 2rem;
-        }
-
-        .port-number span {
-          vertical-align: bottom;
-          font-size: 1rem;
-          line-height: 1.2rem;
-        }
-
-        input {
-          font-size: 1.4rem;
-        }
-      </style>
+          .port-number input {
+            width: 88px;
+          }
+        </style>
+      </section>
     </div>
   </body>
 </html>
