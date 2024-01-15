@@ -19,7 +19,7 @@ The instructions below were run locally on a Raspberry Pi (no desktop environmen
 3. Run `sudo nano /etc/hosts`.
     * In your hosts file, change the line your hostname is on from `[hostname] 127.0.1.1` to `[hostname] [ip]`, where `[hostname]` is your server's hostname, and `[ip]` is your private or public IP, depending on how you'll be connecting to your `slirp` instance.
     * When done editing the file, press `CTRL + X`, then type `y` and hit enter.
-4. With your IP address in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/).
+4. With your IP address in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/phone-number-generator.html).
 5. Boot up your Wii and make sure it's connected to your network in some form. (Wired is preferred, but wireless will work.)
 6. Launch the version of _Phantasy Star Online_ you'd like to test from Devolution, and select the 'Website' option from the main menu.
 7. Depending if you've set your network settings up before, you'll either create or load a configuration on the memory card. If you're presented with the network setup menu, proceed, otherwise, press the 'Y' button and select 'Setup.'
