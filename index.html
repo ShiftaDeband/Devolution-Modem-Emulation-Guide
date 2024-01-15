@@ -1,0 +1,349 @@
+<html>
+  <head>
+    <title>IP Address to Devolution Phone Number</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="intro">
+        <h1>Devolution Phone Number Generator</h1>
+        <p>
+          This tool is for users who are running their own slirp instance to
+          connect to a <em>Phantasy Star Online</em>
+          private server using Devolution's dial up emulation on the Wii.
+        </p>
+        <p>
+          To get started, see these instructions to set up slirp, then enter the
+          IP address and port number of your slirp instance to generate the
+          phone number you'll use in your <em>PSO</em> connection settings.
+        </p>
+      </div>
+      <form onsubmit="generatePhone(); return false;">
+        <div class="ip-address">
+          <input
+            id="one"
+            type="number"
+            min="1"
+            max="255"
+            minlength="1"
+            maxlength="3"
+            value="192"
+            onchange="generatePhone()"
+            onkeyup="generatePhone()"
+            placeholder="192"
+          /><span>.</span>
+          <input
+            id="two"
+            type="number"
+            min="0"
+            max="255"
+            minlength="1"
+            maxlength="3"
+            value="168"
+            onchange="generatePhone()"
+            onkeyup="generatePhone()"
+            placeholder="168"
+          /><span>.</span>
+          <input
+            id="three"
+            type="number"
+            min="0"
+            max="255"
+            minlength="1"
+            maxlength="3"
+            value="1"
+            onchange="generatePhone()"
+            onkeyup="generatePhone()"
+            placeholder="1"
+          /><span>.</span>
+          <input
+            id="four"
+            type="number"
+            min="0"
+            max="255"
+            minlength="1"
+            maxlength="3"
+            value="100"
+            onchange="generatePhone()"
+            onkeyup="generatePhone()"
+            placeholder="100"
+          />
+        </div>
+        <div class="port-number">
+          <span>Port</span>
+          <input
+            id="port"
+            type="number"
+            min="1"
+            max="65535"
+            minlength="1"
+            maxlength="5"
+            value="63335"
+            onchange="generatePhone()"
+            onkeyup="generatePhone()"
+            placeholder="63335"
+          />
+        </div>
+      </form>
+      <div class="dev-phone">
+        Phone Number
+        <span id="digits"></span>
+      </div>
+      <script>
+        function generatePhone() {
+          let one = parseInt(document.getElementById("one").value);
+          let two = parseInt(document.getElementById("two").value);
+          let three = parseInt(document.getElementById("three").value);
+          let four = parseInt(document.getElementById("four").value);
+          let port = parseInt(document.getElementById("port").value);
+          let combined =
+            one.toString(16).padStart(2, "0") +
+            two.toString(16).padStart(2, "0") +
+            three.toString(16).padStart(2, "0") +
+            four.toString(16).padStart(2, "0") +
+            port.toString(16).padStart(2, "0");
+
+          if (
+            isNaN(parseInt(combined, 16)) ||
+            isNaN(one) ||
+            isNaN(two) ||
+            isNaN(three) ||
+            isNaN(four) ||
+            isNaN(port) ||
+            one <= 0 ||
+            two < 0 ||
+            three < 0 ||
+            four < 0 ||
+            port <= 0 ||
+            one > 255 ||
+            two > 255 ||
+            three > 255 ||
+            four > 255 ||
+            port > 65535
+          ) {
+            document.getElementById("digits").textContent = "Invalid";
+          } else {
+            console.log(
+              "Hexidecimal Values:",
+              combined.toUpperCase().replace(/(.{2})/g, "$&" + " ")
+            );
+            document.getElementById("digits").textContent = parseInt(
+              combined,
+              16
+            );
+          }
+        }
+        window.onload = generatePhone();
+      </script>
+      <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          font: inherit;
+          vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+          display: block;
+        }
+        body {
+          line-height: 1;
+        }
+        ol,
+        ul {
+          list-style: none;
+        }
+        blockquote,
+        q {
+          quotes: none;
+        }
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+          content: "";
+          content: none;
+        }
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+        }
+        /* post reset styles */
+        html {
+          font-size: 62.5%;
+        }
+
+        em {
+          font-style: italic;
+        }
+
+        body {
+          display: grid;
+          background-color: #121212;
+          place-items: center;
+          min-height: 100vh;
+          font-family: sans-serif;
+        }
+
+        .wrapper {
+          max-width: 60rem;
+          background-color: white;
+          padding: 2rem;
+          border-radius: 2rem;
+          margin: 2rem;
+        }
+
+        .intro h1 {
+          font-weight: 700;
+          font-size: 2rem;
+          padding-bottom: 1rem;
+        }
+
+        p,
+        span {
+          font-size: 1.6rem;
+          line-height: 2rem;
+        }
+
+        p + p {
+          margin: 2rem 0;
+        }
+
+        .dev-phone {
+          text-align: center;
+        }
+
+        #digits {
+          font-weight: 700;
+          display: block;
+        }
+
+        form {
+          text-align: center;
+        }
+
+        .ip-address,
+        .port-number {
+          margin: 0.8rem 0;
+        }
+
+        .ip-address {
+          font-size: 0;
+        }
+
+        .ip-address span {
+          font-size: 1.4rem;
+          line-height: 1.6rem;
+          padding: 0 0.2rem;
+          vertical-align: bottom;
+          font-weight: 700;
+        }
+
+        .port-number {
+          margin-bottom: 2rem;
+        }
+
+        .port-number span {
+          vertical-align: bottom;
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+
+        input {
+          font-size: 1.4rem;
+        }
+      </style>
+    </div>
+  </body>
+</html>
