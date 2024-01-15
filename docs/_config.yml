@@ -5,4 +5,4 @@ relative_links:
   enabled: true
   collections: true
 include:
-  - /docs/README.md
+  - README.md
