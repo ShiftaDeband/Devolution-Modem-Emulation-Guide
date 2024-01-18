@@ -1,9 +1,7 @@
 # Installing socat & slirp for Devolution modem emulation (Wii)
-Devolution is a useful tool for Wii consoles, even with the rise of Nintendont, especially for testing modem connections in _Phantasy Star Online_ for the GameCube. 
+Devolution is a useful tool for Wii consoles, even with the rise of Nintendont, especially for testing modem connections in _Phantasy Star Online_ for the GameCube. For instance, the _Phantasy Star Online Episode I&II Trial Edition_ requires the modem for online play and doesn't allow for the Broadband Adapter (BBA) to be used at all.
 
-The _Phantasy Star Online Episode I&II Trial Edition_ requires the modem for online play and doesn't allow for the Broadband Adapter (BBA) to be used at all (and doesn't work with DreamPi/CubePi) and the first Japanese release of _Phantasy Star Online Episode I&II_ (version 1.0, blue disc) also doesn't work with DreamPi/CubePi (but can be run with a BBA).
-
-In order to test these versions easily on a private server without using DNS redirection and someone else's PPP emulator, you can install slirp and socat on a server or Raspberry Pi to do everything, whether that's running locally or on a VPS.
+In order to test the _Trial Edition_ and modem connections on a private server without using DNS redirection and someone else's PPP emulator, you can install slirp and socat on a server or Raspberry Pi to do everything, whether that's running locally or on a VPS.
 
 ## How To
 **Overview:** You'll be installing `socat` and `slirp`. socat will handle the incoming connections and passing them to slirp, and slirp will handle the PPP emulation.
