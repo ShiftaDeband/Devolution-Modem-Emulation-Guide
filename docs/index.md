@@ -21,10 +21,9 @@ If you're hosting a [newserv](https://github.com/fuzziqersoftware/newserv) insta
     * **Password:** Set this to anything -- it cannot be left blank.
     * **Phone Number:** Fill in the phone number you generated in step 5, carefully checking that it's correct.
 10. Save your configuration and select 'Return to game' from the menu bar by pressing 'Y'.
-11. Back in _PSO_, attempt to connect to the server. 
-    * If you get to the lobby select screen, you're set! 
-    * If not, check steps above or see 'Troubleshooting' below.
-    * If you'd like to add authentication using the username and password you set in step 8, see the next section.
+11. Back in _PSO_, attempt to connect to the server.
+  * If you're able to connect, you're set!
+  * If you have any issues, check that all steps above are completed. Check your newserv config, making sure your interface/IP address and other options are set, and make sure the phone number in your network settings is correct.
 
 ## Option 2: socat and slirp
 **Overview:** You'll be installing `socat` and `slirp`. socat will handle the incoming connections and passing them to slirp, and slirp will handle the PPP emulation.
