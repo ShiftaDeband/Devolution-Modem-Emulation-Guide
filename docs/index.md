@@ -1,9 +1,32 @@
-# Installing socat & slirp for Devolution modem emulation (Wii)
+# Devolution Modem Emulation (Wii/Wii U)
 Devolution is a useful tool for Wii consoles, even with the rise of Nintendont, especially for testing modem connections in _Phantasy Star Online_ for the GameCube. For instance, the _Phantasy Star Online Episode I&II Trial Edition_ requires the modem for online play and doesn't allow for the Broadband Adapter (BBA) to be used at all.
 
-In order to test the _Trial Edition_ and modem connections on a private server without using DNS redirection and someone else's PPP emulator, you can install slirp and socat on a server or Raspberry Pi to do everything, whether that's running locally or on a VPS.
+In order to test the _Trial Edition_ and modem connections on a private server without using DNS redirection and someone else's PPP emulator, you can either use newserv or install slirp and socat on a server or Raspberry Pi to do everything, whether that's running locally or on a VPS.
 
-## How To
+## Option 1: newserv
+If you're hosting a [newserv](https://github.com/fuzziqersoftware/newserv) instance, you can easily enable a built-in PPP emulator Devolution can connect to.
+
+1. Install `newserv` if not already present by [following instructions in the Setup section](https://github.com/fuzziqersoftware/newserv?tab=readme-ov-file#setup).
+2. Edit your `config.json` file in the `system` folder.
+   * If this file is not present, copy `config.sample.json` to `config.json`.
+3. Find the field named `PPPRawListen` and adjust this field to match either your internal or external IP address and a port of your choice (for example, "192.168.1.100:63335")
+   * Using the example above, your line will look like `"PPPRawListen": ["192.168.1.100:63335"],`
+4. Save the configuration file, then start newserv.
+5. With your IP address and port in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/phone-number-generator.html).
+6. Boot up your Wii and make sure it's connected to your network in some form. (Wired is preferred, but wireless will work.)
+7. Launch the version of _Phantasy Star Online_ you'd like to test from Devolution, and select the 'Website' option from the main menu.
+8. Depending if you've set your network settings up before, you'll either create or load a configuration on the memory card. If you're presented with the network setup menu, proceed, otherwise, press the 'Y' button and select 'Setup.'
+9. While in the network settings menu, you'll only need to change the following options:
+    * **Username:** Set this to anything -- it cannot be left blank.
+    * **Password:** Set this to anything -- it cannot be left blank.
+    * **Phone Number:** Fill in the phone number you generated in step 5, carefully checking that it's correct.
+10. Save your configuration and select 'Return to game' from the menu bar by pressing 'Y'.
+11. Back in _PSO_, attempt to connect to the server. 
+    * If you get to the lobby select screen, you're set! 
+    * If not, check steps above or see 'Troubleshooting' below.
+    * If you'd like to add authentication using the username and password you set in step 8, see the next section.
+
+## Option 2: socat and slirp
 **Overview:** You'll be installing `socat` and `slirp`. socat will handle the incoming connections and passing them to slirp, and slirp will handle the PPP emulation.
 
 If you follow this example exactly, you'll be using port `63335` for these connections. Make sure your firewall, if any is installed, allows connections to this port. Everything below is executed in the home folder, but you can set this up anywhere that's appropriate for you - just make sure you update your paths to adjust.
@@ -17,7 +40,7 @@ The instructions below were run locally on a Raspberry Pi (no desktop environmen
 3. Run `sudo nano /etc/hosts`.
     * In your hosts file, change the line your hostname is on from `[hostname] 127.0.1.1` to `[hostname] [ip]`, where `[hostname]` is your server's hostname, and `[ip]` is your private or public IP, depending on how you'll be connecting to your `slirp` instance.
     * When done editing the file, press `CTRL + X`, then type `y` and hit enter.
-4. With your IP address in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/phone-number-generator.html).
+4. With your IP address and port in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/phone-number-generator.html).
 5. Boot up your Wii and make sure it's connected to your network in some form. (Wired is preferred, but wireless will work.)
 6. Launch the version of _Phantasy Star Online_ you'd like to test from Devolution, and select the 'Website' option from the main menu.
 7. Depending if you've set your network settings up before, you'll either create or load a configuration on the memory card. If you're presented with the network setup menu, proceed, otherwise, press the 'Y' button and select 'Setup.'
@@ -35,7 +58,7 @@ The instructions below were run locally on a Raspberry Pi (no desktop environmen
     * If not, check steps above or see 'Troubleshooting' below.
     * If you'd like to add authentication using the username and password you set in step 8, see the next section.
 
-## Using Authentication
+### Using Authentication
 If you plan to leave your slirp instance publicly accessible, I'd highly recommend using authentication. This is not much of an issue if you are not exposing your slirp instance to the world, but if you do expose it publicly, by default, anyone can connect using any combination of username and password. 
 
 To add authentication:
@@ -52,7 +75,7 @@ To add authentication:
 5. Now, run the new command:
     * `sudo socat -d -d tcp-l:63335,reuseaddr,fork,keepalive,nodelay,keepcnt=5,keepidle=300,keepintvl=60 exec:'slirp -P -dppp +chap nozeros \"dns [DNS SERVER]\"',pty,ctty,su-d=[USER] &`
 
-## Troubleshooting
+### Troubleshooting
 If you're having trouble connecting at all, make sure you're allowing access to the port that `socat` is running on. Using the defaults above, that port is 63335. You can check that this port using a tool like `nc -vnzu [ip address] 63335` or `Test-NetConnection [ip address] -Port 63335`.
 
 If your connection loads to the 'Connecting to DNS' screen but does not progress, make sure your `/etc/hosts` file is properly updated as outlined in step 3 of the 'How To' section.
