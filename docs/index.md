@@ -1,10 +1,13 @@
 # Devolution Modem Emulation (Wii/Wii U)
 Devolution is a useful tool for Wii consoles, even with the rise of Nintendont, especially for testing modem connections in _Phantasy Star Online_ for the GameCube. For instance, the _Phantasy Star Online Episode I&II Trial Edition_ requires the modem for online play and doesn't allow for the Broadband Adapter (BBA) to be used at all.
 
-In order to test the _Trial Edition_ and modem connections on a private server without using DNS redirection and someone else's PPP emulator, you can either use newserv or install slirp and socat on a server or Raspberry Pi to do everything, whether that's running locally or on a VPS.
+In order to test the _Trial Edition_ and modem connections on a public or private server, you can either use newserv or use slirp and socat.
+
+- [Option 1: newserv](#option-1-newserv)
+- [Option 2: socat and slirp](#option-2-socat-and-slirp)
 
 ## Option 1: newserv
-If you're hosting a [newserv](https://github.com/fuzziqersoftware/newserv) instance, you can easily enable a built-in PPP emulator Devolution can connect to.
+If you're hosting a [newserv](https://github.com/fuzziqersoftware/newserv) instance, you can easily enable a built-in PPP emulator Devolution can connect to. Once setup is complete, you can even [use newserv as a proxy to connect to another server](https://github.com/fuzziqersoftware/newserv?tab=readme-ov-file#using-newserv-as-a-proxy).
 
 1. Install `newserv` if not already present by [following instructions in the Setup section](https://github.com/fuzziqersoftware/newserv?tab=readme-ov-file#setup).
 2. Edit your `config.json` file in the `system` folder.
