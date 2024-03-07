@@ -8,11 +8,13 @@ If you're hosting a [newserv](https://github.com/fuzziqersoftware/newserv) insta
 
 1. Install `newserv` if not already present by [following instructions in the Setup section](https://github.com/fuzziqersoftware/newserv?tab=readme-ov-file#setup).
 2. Edit your `config.json` file in the `system` folder.
-   * If this file is not present, copy `config.sample.json` to `config.json`.
+   * If this file is not present, copy `config.sample.json` to `config.json`. Be sure to update the configuration as needed.
 3. Find the field named `PPPRawListen` and adjust this field to match either your internal or external IP address and a port of your choice (for example, "192.168.1.100:63335")
    * Using the example above, your line will look like `"PPPRawListen": ["192.168.1.100:63335"],`
 4. Save the configuration file, then start newserv.
-5. With your IP address and port in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/phone-number-generator.html).
+5. newserv will print out the phone number in your console. The line will appear similar to this line using the IP and port above as an example:
+  * `Note: The Devolution phone number for T-PPPSR-63335 is 211827810432871`
+  * If you don't see the line above, you can [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/phone-number-generator.html).
 6. Boot up your Wii and make sure it's connected to your network in some form. (Wired is preferred, but wireless will work.)
 7. Launch the version of _Phantasy Star Online_ you'd like to test from Devolution, and select the 'Website' option from the main menu.
 8. Depending if you've set your network settings up before, you'll either create or load a configuration on the memory card. If you're presented with the network setup menu, proceed, otherwise, press the 'Y' button and select 'Setup.'
@@ -26,7 +28,7 @@ If you're hosting a [newserv](https://github.com/fuzziqersoftware/newserv) insta
   * If you have any issues, check that all steps above are completed. Check your newserv config, making sure your interface/IP address and other options are set, and make sure the phone number in your network settings is correct.
 
 ## Option 2: socat and slirp
-**Overview:** You'll be installing `socat` and `slirp`. socat will handle the incoming connections and passing them to slirp, and slirp will handle the PPP emulation.
+Using this option, you'll be installing `socat` and `slirp`. socat will handle the incoming connections and passing them to slirp, and slirp will handle the PPP emulation.
 
 If you follow this example exactly, you'll be using port `63335` for these connections. Make sure your firewall, if any is installed, allows connections to this port. Everything below is executed in the home folder, but you can set this up anywhere that's appropriate for you - just make sure you update your paths to adjust.
 
