@@ -1,7 +1,7 @@
 # Devolution Modem Emulation (Wii/Wii U)
 Devolution is a useful tool for Wii consoles, even with the rise of Nintendont, especially for testing modem connections in _Phantasy Star Online_ for the GameCube. For instance, the _Phantasy Star Online Episode I&II Trial Edition_ requires the modem for online play and doesn't allow for the Broadband Adapter (BBA) to be used at all.
 
-In order to test the _Trial Edition_ and modem connections on a public or private server, you can either use newserv or use slirp and socat.
+In order to test the _Trial Edition_ and modem connections on a public or private server, you can use either newserv or slirp and socat.
 
 - [Option 1: newserv](#option-1-newserv)
 - [Option 2: socat and slirp](#option-2-socat-and-slirp)
