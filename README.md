@@ -1,3 +1,3 @@
-# Devolution slirp Modem Emulation Guide
+# Devolution Modem Emulation Guide
 
-[View this guide on GitHub pages.](https://shiftadeband.github.io/Devolution-slirp-Modem-Emulation-Guide/)
+[View this guide on GitHub pages.](https://shiftadeband.github.io/Devolution-Modem-Emulation-Guide/)
