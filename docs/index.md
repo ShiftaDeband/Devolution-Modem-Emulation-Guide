@@ -41,19 +41,20 @@ The instructions below were run locally on a Raspberry Pi (no desktop environmen
 3. Run `sudo nano /etc/hosts`.
     * In your hosts file, change the line your hostname is on from `[hostname] 127.0.1.1` to `[hostname] [ip]`, where `[hostname]` is your server's hostname, and `[ip]` is your private or public IP, depending on how you'll be connecting to your `slirp` instance.
     * When done editing the file, press `CTRL + X`, then type `y` and hit enter.
-4. With your IP address and port in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-Modem-Emulation-Guide/phone-number-generator.html).
-5. Boot up your Wii and make sure it's connected to your network in some form. (Wired is preferred, but wireless will work.)
-6. Launch the version of _Phantasy Star Online_ you'd like to test from Devolution, and select the 'Website' option from the main menu.
-7. Depending if you've set your network settings up before, you'll either create or load a configuration on the memory card. If you're presented with the network setup menu, proceed, otherwise, press the 'Y' button and select 'Setup.'
-8. While in the network settings menu, you'll only need to change the following options:
+4. Execute the command:
+    * `sudo socat -d -d tcp-l:63335,reuseaddr,fork,keepalive,nodelay,keepcnt=5,keepidle=300,keepintvl=60 exec:'slirp -P -dppp nozeros \"dns [DNS SERVER]\"',pty,ctty,su-d=[USER] &`
+    * `[DNS Server]` should be set to your private server's IP address, e.g. `192.168.1.100`.
+    * `[USER]` should have root permissions, e.g. your current user if they have root, or by creating a new super user.
+    * If you want to use a port other than 63335, adjust it above in `tcp-l:63335`.
+5. With your IP address and port in mind, [use this tool to help generate the phone number to dial into from Devolution](https://shiftadeband.github.io/Devolution-Modem-Emulation-Guide/phone-number-generator.html).
+6. Boot up your Wii and make sure it's connected to your network in some form. (Wired is preferred, but wireless will work.)
+7. Launch the version of _Phantasy Star Online_ you'd like to test from Devolution, and select the 'Website' option from the main menu.
+8. Depending if you've set your network settings up before, you'll either create or load a configuration on the memory card. If you're presented with the network setup menu, proceed, otherwise, press the 'Y' button and select 'Setup.'
+9. While in the network settings menu, you'll only need to change the following options:
     * **Username:** If you'd like to use authentication, it will be the username you'd like to authenticate with. Otherwise it can be anything, but it cannot be left blank.
     * **Password:** If you'd like to use authentication, it will be the password you'd like to authenticate with. Otherwise it can be anything, but it cannot be left blank.
-    * **Phone Number:** Fill in the phone number you generated in step 4, carefully checking that it's correct.
-9. Save your configuration and select 'Return to game' from the menu bar by pressing 'Y'.
-10. Execute the command:
-    * `sudo socat -d -d tcp-l:63335,reuseaddr,fork,keepalive,nodelay,keepcnt=5,keepidle=300,keepintvl=60 exec:'slirp -P -dppp nozeros \"dns [DNS SERVER]\"',pty,ctty,su-d=[USER] &`
-    * Note: `[DNS Server]` should be set to your private server's IP address, e.g. `192.168.5.250`.
-    * Note: `[USER]` should have root permissions, e.g. your current user if they have root, or by creating a new super user.
+    * **Phone Number:** Fill in the phone number you generated in step 5, carefully checking that it's correct.
+10. Save your configuration and select 'Return to game' from the menu bar by pressing 'Y'.
 11. Back in _PSO_, attempt to connect to the server. 
     * If you get to the lobby select screen, you're set! 
     * If not, check steps above or see 'Troubleshooting' below.
